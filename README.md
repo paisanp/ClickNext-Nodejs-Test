@@ -28,9 +28,11 @@ npm run dev
 ```
 username: paisan
 password: 1234
+phonenumber: 0815352718
 ```
 2. user2
 ```
 username: somchai
 password: 1234
+phonenumber: 0812345678
 ```
