@@ -1,0 +1,20 @@
+{
+  "name": "cn",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "install-frontend": "cd frontend && npm i",
+    "install-backend": "cd backend && npm i",
+    "install-package": "concurrently \"npm run install-frontend\" \"npm run install-backend\"",
+    "frontend": "cd frontend && npm start",
+    "backend": "cd backend && npm start",
+    "dev": "concurrently \"npm run frontend\" \"npm run backend\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^7.6.0"
+  }
+}
