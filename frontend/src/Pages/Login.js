@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import axios from "axios";
 import Button from 'react-bootstrap/Button';
-import { useNavigate } from "react-router-dom";
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -9,17 +8,11 @@ import Col from 'react-bootstrap/Col';
 import Navbar from 'react-bootstrap/Navbar';
 
 function Login() {
-  const navigate = useNavigate();
 
-  const [user, setUser] = useState({ username: "", password: "" });
   const [message, setMessage] = useState(null);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setUser({ ...user, [name]: value, });
-  };
 
   const login = async () => {
     await axios.post("http://localhost:5001/login", { username, password }).then((res) => {
@@ -27,10 +20,9 @@ function Login() {
       localStorage.setItem('token', res.data.token)
       localStorage.setItem('username', res.data.data.username)
 
-      // alert(res.data.message);
     });
 
-    navigate("/");
+    window.location.href = "/";
   };
 
 

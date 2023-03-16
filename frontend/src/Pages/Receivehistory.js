@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import {Table, Container, Row, Col} from 'react-bootstrap';
 import Navbar from '../Components/NavBar';
 
 function Receivehistory() {
-    const navigate = useNavigate();
 
     var token = localStorage.getItem('token');
     var username = localStorage.getItem('username')
@@ -28,7 +26,7 @@ function Receivehistory() {
 
     }, []);
 
-    if (error) return navigate("/login");
+    if (error) return window.location.href = "/login";
 
     if (!allreceivehistory) {
         return <div>Loading</div>

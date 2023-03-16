@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import { Button, Modal, FloatingLabel, Form, Container, Row, Col } from 'react-bootstrap';
 import Navbar from '../Components/NavBar';
 
 function Deposit() {
-    const navigate = useNavigate();
 
     var token = localStorage.getItem('token');
     var username = localStorage.getItem('username')
@@ -34,7 +32,7 @@ function Deposit() {
 
     }, []);
 
-    if (error) return navigate("/login");
+    if (error) return window.location.href = "/login";
 
     const deposit = async () => {
         await axios.post("http://localhost:5001/deposit", { token, username, depositamount }).then((res) => {
@@ -44,7 +42,7 @@ function Deposit() {
         });
     }
     if (state) {
-        navigate("/");
+        window.location.href = "/";
     }
     if (!user) {
         return <div>Loading</div>

@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import {Table, Container, Row, Col} from 'react-bootstrap';
 import Navbar from '../Components/NavBar';
 
 function Transferhistory() {
-    const navigate = useNavigate();
 
     var token = localStorage.getItem('token');
     var username = localStorage.getItem('username')
@@ -28,7 +26,7 @@ function Transferhistory() {
 
     }, []);
 
-    if (error) return navigate("/login");
+    if (error) return window.location.href = "/login";
 
     if (!alltransferhistory) {
         return <div>Loading</div>

@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import Navbar from '../Components/NavBar';
 import {Container, Row, Col} from 'react-bootstrap';
 
 function Home() {
-  const navigate = useNavigate();
 
   var token = localStorage.getItem('token');
   var username = localStorage.getItem('username')
@@ -26,7 +24,7 @@ function Home() {
 
   }, []);
 
-  if (error) return navigate("/login");
+  if (error) return window.location.href = "/login";
 
   if (!user) {
     return <div>Loading</div>

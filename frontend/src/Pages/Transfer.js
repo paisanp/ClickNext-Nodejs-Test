@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import {Button, Modal, FloatingLabel, Form, Container, Row, Col} from 'react-bootstrap';
 import Navbar from '../Components/NavBar';
 
 function Transfer() {
-  const navigate = useNavigate();
 
   var token = localStorage.getItem('token');
   var username = localStorage.getItem('username')
@@ -34,7 +32,7 @@ function Transfer() {
 
   }, []);
 
-  if (error) return navigate("/login");
+  if (error) return window.location.href = "/login";
 
   const transfer = async () => {
     await axios.post("http://localhost:5001/transfer", { token, username, transferamount, phone }).then((res) => {
@@ -45,7 +43,7 @@ function Transfer() {
   }
 
   if (state) {
-    navigate("/");
+    window.location.href = "/";
   }
   if (!user) {
     return <div>Loading</div>
